@@ -1,0 +1,95 @@
+<html>
+
+
+
+  <head>
+<script src="static\package\dist\chart.js"></script>
+
+<title>Graphique du bilan électrique</title>
+
+<nav class="graphique">
+  <ul>
+
+    
+        <li class="p3btn">
+            <a href="electrique15min.html">Bilan sur 15 minutes </a>      
+        </li>
+
+        <li class="p3btn">
+             <a href="electrique1h.html">Bilan sur 1 heure </a>   
+        </li>
+
+        <li class="p3btn">
+             <a href="electrique8h.html">Bilan sur 8 heures </a>     
+        </li>
+
+        <li class="p3btn">
+            <a href="electrique.html">Bilan sur la journées </a>      
+        </li>
+
+        <li class="p3btn">
+             <a href="electriqueSem.html">Bilan hebdomadaire </a>
+        </li>
+
+
+  </ul>
+</nav>
+  </head>
+
+
+
+
+  <body>
+
+    <div style= "width=75% height=75%">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        Chart.defaults.plugins.title.display=true;
+        Chart.defaults.plugins.title.text={{titre}};
+    </script>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: {{labels|safe}},
+                                datasets:   [{
+                                                label: 'Courant 1',
+                                                data: {{datas1|safe}},
+                                                backgroundColor: ['#0B3B0B' ],
+                                                borderColor: ['rgba(255, 99, 132, 1)'],
+                                                borderWidth: 1
+                                             },
+                                            {
+                                                label: 'Courant 2',
+                                                 borderColor: ['#FF0000'],
+                                                 backgroundColor: ['#0B3B0B' ],
+                                                data: {{datas2|safe}},
+                                            },
+                                            {
+                                                label: 'Courant 3',
+                                                 borderColor: ['#0080FF'],
+                                                 backgroundColor: ['#0B0B61' ],
+                                                data: {{datas3|safe}},
+                                            },
+                                            {
+                                                label: 'Courant 4',
+                                                 borderColor: ['#01DF01'],
+                                                 backgroundColor: ['#21610B' ],
+                                                data: {{datas4|safe}},
+                                            }
+                                            ]
+                                    },
+                            options: {
+                                        scales: {
+                                            y: {beginAtZero: false}
+                                                }
+                                    }
+                        });
+</script>
+
+  </body>
+</html>

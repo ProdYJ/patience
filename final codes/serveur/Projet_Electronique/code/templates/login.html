@@ -1,0 +1,20 @@
+<h1>Connexion à la remorque<h1>
+<h2><h2>
+
+{% with messages =get_flashed_messages() %}
+{% if messages %}
+{%for msg in messages %}
+<p>{{msg}}<p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+
+<form action="#" method="POST">
+	<p>Mot de passe:</p>
+	<p><input type="text" name="mdp" /></p>
+	<p><input type="submit" value="Connexion"/></p>
+</form>
+
+{{data}}

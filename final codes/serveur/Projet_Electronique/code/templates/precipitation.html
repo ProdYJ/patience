@@ -1,0 +1,80 @@
+<html>
+
+
+
+  <head>
+<script src="static\package\dist\chart.js"></script>
+
+<title>Graphique des precipitations</title>
+
+<nav class="graphique">
+  <ul>
+
+    
+        <li class="p3btn">
+            <a href="precipitation15min.html">Precipitions sur 15 minutes </a>      
+        </li>
+
+        <li class="p3btn">
+             <a href="precipitation1h.html">Precipitions sur 1 heure </a>   
+        </li>
+
+        <li class="p3btn">
+             <a href="precipitation8h.html">Precipitions sur 8 heures </a>     
+        </li>
+
+        <li class="p3btn">
+            <a href="precipitation.html">Precipitions sur la journées </a>      
+        </li>
+
+        <li class="p3btn">
+             <a href="precipitationSem.html">Precipitions hebdomadaire </a>
+        </li>
+
+
+  </ul>
+</nav>
+  </head>
+
+
+
+
+  <body>
+
+    <div style= "width=75% height=75%">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        Chart.defaults.plugins.title.display=true;
+        Chart.defaults.plugins.title.text={{titre}};
+    </script>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: {{labels|safe}},
+                                datasets:   [{
+                                                label: '# of Votes',
+                                                data: {{datas|safe}},
+                                                backgroundColor: [
+                                                    'rgba(255, 99, 132, 0.2)'
+                                                ],
+                                                borderColor: [
+                                                    'rgba(255, 99, 132, 1)'
+                                                ],
+                                                borderWidth: 1
+                                             }]
+                                    },
+                            options: {
+                                        scales: {
+                                            y: {beginAtZero: false}
+                                                }
+                                    }
+                        });
+</script>
+
+  </body>
+</html>

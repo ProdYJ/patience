@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Projet 3BSI-GE 2020/2021</title>
+	<meta charset="utf-8">
+	<meta http-equiv="refresh" content="15"> 
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+	<!-- Haut de page -->
+	<header>
+		<h1 class="title">
+			Projet 3BSI-GE 2020/2021 : 
+			<br> Site de contrôle et de gestion de la remorque solaire.
+		</h1>
+		
+	</header>
+
+	<!-- Menu de navigation -->
+	<nav class="menu-nav">
+		<ul>
+			<li class="btn">
+				<a href="#partie1">
+					Partie1
+				</a>
+			</li>
+			<li class="btn">
+				<a href="#partie2">
+					Partie2
+				</a>
+			</li>
+			<li class="btn">
+				<a href="#partie3">
+					Partie3
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Partie 1  -->
+	<section class="partie1" id="partie1">
+
+		<div class="leftbox">
+			<div class="uppbox">
+				<form method="POST" action="">
+					<div class="uppL">
+						<ul>
+							<li class="modebtn">
+								<input class="ON_btn" type="submit" name="btn" value="ON">
+							</li>
+							<li class="modebtn">
+								<input class="Manual_btn" type="submit" name="btn" value="Manual">
+							</li>
+							<li class="modebtn">
+								<input class="OFF_btn" type="submit" name="btn" value="OFF">
+							</li>
+						</ul>
+					</div>
+				</form>
+				<div class="uppR">
+					<img class="d1" src="../static/img/diodeOFF.png">
+					<img class="d2" src="../static/img/diodeOFF.png">
+					<img class="d3" src="../static/img/diodeOFF.png">
+				</div>
+			</div>
+
+			<div class="bottombox">
+				<h3>
+					Système de contrôle manuel :
+				</h3>
+				<form method="POST" action="">
+					<input class="actionOpen" type="submit" name="btn" value="OPEN">
+					<input class="actionClose" type="submit" name="btn" value="CLOSE">
+				</form>
+			</div>
+
+		</div>
+		<div class="rightbox">
+			<h1>
+				Tableau de bord du système :
+			</h1>
+			<table class="t1">
+			    <thead>
+			        <tr>
+			            <th>Module</th>
+			            <th>Etat</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Toit de la remorque</td>
+			            <td class="etat1"></td>
+			        </tr>
+			        <tr>
+			            <td>Utilisation du vérin</td>
+			            <td class="etat2"></td>
+			        </tr>
+			        <tr>
+			            <td>Utilisation de la pompe</td>
+			            <td class="etat3"></td>
+			        </tr>
+			        <tr>
+			            <td>Batterie</td>
+			            <td class="etat4"></td>
+			        </tr>
+			        <tr>
+			            <td>Capteur de pluie</td>
+			            <td class="etat5"></td>
+			        </tr>
+			        <tr>
+			            <td>Etat de la remorque</td>
+			            <td class="etat6"></td>
+			        </tr>
+			    </tbody>
+			</table>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+      var vitesse = {{vitesse}};
+      var etat1 = document.querySelector('td.etat1');
+      var verin = {{verin}};
+      var etat2 = document.querySelector('td.etat2');
+      var pompe = {{pompe}};
+      var etat3 = document.querySelector('td.etat3');
+      var batterie = {{batterie}};
+      var etat4 = document.querySelector('td.etat4');
+      var pluie = {{pluie}};
+      var etat5 = document.querySelector('td.etat5');
+      var etat = {{etat}};
+      var etat6 = document.querySelector('td.etat6');
+
+
+      if (vitesse==0) {
+      	etat1.textContent = 'Au repos';
+      	etat1.style.backgroundColor = 'rgba(71,200,90,0.4)';
+      }
+      else {
+      	etat1.textContent = 'En mouvement';
+      	etat1.style.backgroundColor = 'rgba(212,130,45,0.4)';
+      }
+
+      if (verin==0) {
+      	etat2.textContent = 'Au repos';
+      	etat2.style.backgroundColor = 'rgba(71,200,90,0.4)';
+      }
+      else {
+      	etat2.textContent = 'En fonctionnement';
+      	etat2.style.backgroundColor = 'rgba(212,130,45,0.4)';
+      }
+
+      if (pompe==0) {
+      	etat3.textContent = 'Au repos';
+      	etat3.style.backgroundColor = 'rgba(71,200,90,0.4)';
+      }
+      else {
+      	etat3.textContent = 'En fonctionnement';
+      	etat3.style.backgroundColor = 'rgba(212,130,45,0.4)';
+      }
+      if (batterie==0) {
+      	etat4.textContent = 'Aucun apport';
+      	etat4.style.backgroundColor = 'rgba(71,200,90,0.4)';
+      }
+      else {
+      	etat4.textContent = 'En charge';
+      	etat4.style.backgroundColor = 'rgba(212,130,45,0.4)';
+      }
+      if (pluie==0) {
+      	etat5.textContent = 'Temps sec';
+      	etat5.style.backgroundColor = 'rgba(71,200,90,0.4)';
+      }
+      else {
+      	etat5.textContent = 'Précipitation';
+      	etat5.style.backgroundColor = 'rgba(212,130,45,0.4)';
+      }
+      if (etat==0) {
+      	etat6.textContent = 'Remorque fermée';
+      	etat6.style.backgroundColor = 'rgba(71,200,90,0.4)';
+      }
+      else {
+      	etat6.textContent = 'Remorque ouverte';
+      	etat6.style.backgroundColor = 'rgba(212,130,45,0.4)';
+      }
+
+    </script>
+
+	<!-- Partie 2 -->
+	<section class="partie2" id="partie2">
+		<table class="t2">
+			<thead>
+				<tr>
+					<th colspan="4">Données en temps réel :</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Température en extérieur [°C] :<br><br>{{t_ext}}</td>
+					<td>Température panneaux solaires [°C] :<br><br>{{t_panneaux}}</td>
+					<td>Température en intérieur [°C] :<br><br>{{t_int}}</td>
+					<td>Température batterie [°C] :<br><br>{{t_batterie}}</td>
+				</tr>
+				<tr>
+					<td>Courant 1 [A] :<br><br>{{i1}}</td>
+					<td>Courant 2 [A] :<br><br>{{i2}}</td>
+					<td>Courant 3 [A] :<br><br>{{i3}}</td>
+					<td>Courant 4 [A] :<br><br>{{i4}}</td>
+				</tr>
+				<tr>
+					<td>Tension 1 [V] :<br><br>{{u1}}</td>
+					<td>Tension 2 [V] :<br><br>{{u2}}</td>
+					<td>Tension 3 [V] :<br><br>{{u3}}</td>
+					<td>Tension 4 [V] :<br><br>{{u3}}</td>
+				</tr>
+				<tr>
+					<td>LDR basse [V] :<br><br>{{ldr_b}}</td>
+					<td>LDR haute [V] :<br><br>{{ldr_h}}</td>
+					<td>Inclinaison [°] :<br><br>{{incli}}</td>
+					<td>Humidité du sol [%] :<br><br>{{humi}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	
+		<!-- Partie 3 -->
+	<section class="partie3" id="partie3">
+		<h1>
+			Générateur d'historique de données sous forme de graphique 
+			<br> (Saisissez la variable à observer)
+		</h1>
+		<nav class="graphique">
+		  <ul>
+		    <li class="p3btn">
+		      <a href="temperature.html" target="_blank">Temperature</a>      
+		    </li>
+		    <li class="p3btn">
+		      <a href="electrique.html" target="_blank">Bilan électrique</a>      
+		    </li>
+		    <li class="p3btn">
+		      <a href="precipitation.html" target="_blank">Precipitation</a>      
+		    </li>
+		    <li class="p3btn">
+		      <a href="ouverture.html" target="_blank">Ouverure</a>
+		    </li>
+		  </ul>
+		</nav>
+		
+		<h1>
+			Image de surveillance de l'installation :
+		</h1>
+		<img class="camera" src="../static/img/camera.jpg">
+	</section>
+
+	<!-- Pied de page -->
+	<footer>
+		<div class="logo">
+			<img class="cti" src="../static/img/logo.cti.png">
+			<img class="helha" src="../static/img/logo.helha2.png">
+			<img class="inge" src="../static/img/logo.inge.png">
+		</div>
+		
+		<h4>
+			Copyright Helha &copy; - Réalisé par le groupe de travail "page web" de 3BSI GE - 2020-2021 - All Right Reserved
+		</h4>
+	</footer>
+	<script src="../static/js/main.js" ></script>
+</body>
+</html>
